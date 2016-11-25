@@ -10,11 +10,10 @@ import UIKit
 import RxSwift
 import RxQueue
 
-final class SampleQueueItem: Queueable {
-  var duration: TimeInterval {
-    return 2.0
-  }
-  var value = 0
+struct QueueItem: Queueable {
+  var duration: TimeInterval
+  var proprietary: Int
+  var value: Int
 }
 
 final class ViewController: UIViewController {
@@ -23,7 +22,7 @@ final class ViewController: UIViewController {
   @IBOutlet private weak var service02: UILabel!
   @IBOutlet private weak var service03: UILabel!
   
-  private var queue = RxQueue<SampleQueueItem>(serviceCount: 3)
+  private var queue = RxQueue<QueueItem>(serviceCount: 3)
   private var disposeBag = DisposeBag()
   private var count = 0
   
@@ -44,14 +43,25 @@ final class ViewController: UIViewController {
   }
   
   @IBAction func appendAction(_ sender: UIButton) {
-    let item = SampleQueueItem()
-    item.value = count
+    let item = QueueItem(duration: 1.0, proprietary: 1, value: count)
     queue.append(item)
     count += 1
   }
   @IBAction func insertAction(_ sender: UIButton) {
-    let item = SampleQueueItem()
-    item.value = count
+    let item = QueueItem(duration: 1.0, proprietary: 1, value: count)
+    queue.interrupt(item)
+    count += 1
+  }
+  
+  
+  @IBAction func appendAction2(_ sender: Any) {
+    let item = QueueItem(duration: 1.0, proprietary: 2, value: count)
+    queue.append(item)
+    count += 1
+  }
+  
+  @IBAction func insertAction2(_ sender: Any) {
+    let item = QueueItem(duration: 1.0, proprietary: 2, value: count)
     queue.interrupt(item)
     count += 1
   }

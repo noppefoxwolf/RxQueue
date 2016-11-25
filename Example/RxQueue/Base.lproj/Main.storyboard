@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WzG-Ed-Kl3">
-                                <rect key="frame" x="149" y="212.5" width="77.5" height="242"/>
+                                <rect key="frame" x="149" y="162.5" width="77.5" height="342"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akn-ae-LOT">
                                         <rect key="frame" x="22" y="0.0" width="33.5" height="20.5"/>
@@ -60,6 +59,20 @@
                                         <state key="normal" title="Insert"/>
                                         <connections>
                                             <action selector="insertAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vTV-Ga-LFO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJ1-QO-mI5">
+                                        <rect key="frame" x="5.5" y="262" width="67" height="30"/>
+                                        <state key="normal" title="Append 2"/>
+                                        <connections>
+                                            <action selector="appendAction2:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BPp-BM-wSW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="571-bD-Qqi">
+                                        <rect key="frame" x="12.5" y="312" width="53" height="30"/>
+                                        <state key="normal" title="Insert 2"/>
+                                        <connections>
+                                            <action selector="insertAction2:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="edN-hm-lbH"/>
                                         </connections>
                                     </button>
                                 </subviews>

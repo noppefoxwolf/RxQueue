@@ -11,6 +11,7 @@ import RxSwift
 
 public protocol Queueable {
   var duration: TimeInterval { get }
+  var proprietary: Int { get } //サービスの専有数
 }
 
 public final class RxQueue<Element: Queueable> {
@@ -21,6 +22,10 @@ public final class RxQueue<Element: Queueable> {
   
   public init(serviceCount: Int) {
     services = (0..<serviceCount).map { _ in Service<Element>() }
+    setupSubscriber()
+  }
+  
+  private func setupSubscriber() {
     services.enumerated().forEach { (index, service) in
       service.stateBehavior.filter({ $0 == .working }).subscribe(onNext: { [weak self] (_) in
         guard let element = service.element else { return }
@@ -45,8 +50,9 @@ public final class RxQueue<Element: Queueable> {
   
   private func executeNextIfNeeded() {
     guard let nextItem = pool.first else { return }
-    if let unusedService = services.filter({ !$0.isWorking }).first {
-      unusedService.start(nextItem)
+    let unusedServices = services.filter({ !$0.isWorking })
+    if nextItem.proprietary <= unusedServices.count {
+      unusedServices[0..<nextItem.proprietary].forEach({ $0.start(nextItem) })
       pool.removeFirst()
     }
   }

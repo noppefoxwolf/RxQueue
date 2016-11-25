@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RxQueue'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Simple queue using rxswift.'
   s.description      = <<-DESC
 A simple queue that can handle items that define processing duration.
