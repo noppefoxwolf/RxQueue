@@ -9,18 +9,33 @@
 import UIKit
 import RxSwift
 
+extension Reactive where Base: RxQueue {
+  public var out: Observable<(Int, Queueable)> {
+    return base.publisher
+  }
+  public var interrupt: PublishSubject<Queueable> {
+    return base.interrupt
+  }
+  public var append: PublishSubject<Queueable> {
+    return base.append
+  }
+}
+
 public protocol Queueable {
   var duration: TimeInterval { get }
   var proprietary: Int { get } //サービスの専有数
 }
 
-public final class RxQueue {
+public final class RxQueue: NSObject {
   public private(set) var pool = [Queueable]()
-  public let publisher = PublishSubject<(Int, Queueable)>()
-  private var disposeBag = DisposeBag()
+  fileprivate let publisher = PublishSubject<(Int, Queueable)>()
+  private let disposeBag = DisposeBag()
   private var services = [Service]()
+  fileprivate let interrupt = PublishSubject<Queueable>()
+  fileprivate let append = PublishSubject<Queueable>()
   
   public init(serviceCount: Int) {
+    super.init()
     services = (0..<serviceCount).map { _ in Service() }
     setupSubscriber()
   }
@@ -30,12 +45,20 @@ public final class RxQueue {
       service.stateBehavior.filter({ $0 == .working }).subscribe(onNext: { [weak self] (_) in
         guard let element = service.element else { return }
         self?.publisher.onNext((index, element))
-      }).addDisposableTo(disposeBag)
+      }).disposed(by: disposeBag)
       
       service.stateBehavior.filter({ $0 == .idle }).subscribe(onNext: { [weak self] (_) in
         self?.executeNextIfNeeded()
-      }).addDisposableTo(disposeBag)
+      }).disposed(by: disposeBag)
     }
+
+    interrupt.subscribe(onNext: { [weak self] (element) in
+      self?.interrupt(element)
+    }).disposed(by: disposeBag)
+    
+    append.subscribe(onNext: { [weak self] (element) in
+      self?.append(element)
+    }).disposed(by: disposeBag)
   }
   
   public func interrupt(_ element: Queueable) {

@@ -28,7 +28,7 @@ final class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    queue.publisher.subscribe(onNext: { [weak self] (index, item) in
+    queue.rx.out.subscribe(onNext: { [weak self] (index, item) in
       guard let item = item as? QueueItem else { return }
       DispatchQueue.main.async {
         self?.poolLabel.text = self?.queue.pool.flatMap({ $0 as? QueueItem }).map({"\($0.value)"}).joined(separator: ",")

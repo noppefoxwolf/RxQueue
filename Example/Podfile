@@ -3,7 +3,7 @@ swift_version = '3.0.0'
 
 target 'RxQueue_Example' do
   pod 'RxQueue', :path => '../'
-  pod 'RxSwift', '~> 3.0.1'
+  pod 'RxSwift'
 
   target 'RxQueue_Tests' do
     inherit! :search_paths

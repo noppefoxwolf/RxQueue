@@ -1,20 +1,20 @@
 PODS:
-  - RxQueue (0.1.0):
+  - RxQueue (0.1.2):
     - RxSwift
-  - RxSwift (3.0.1)
+  - RxSwift (3.3.1)
 
 DEPENDENCIES:
   - RxQueue (from `../`)
-  - RxSwift (~> 3.0.1)
+  - RxSwift
 
 EXTERNAL SOURCES:
   RxQueue:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RxQueue: 47e2a945752d0960c557d3110372195185209433
-  RxSwift: af5680055c4ad04480189c52d28385b1029493a6
+  RxQueue: b94016c9a135497035c907f11ee7866a2bff785a
+  RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
 
-PODFILE CHECKSUM: 616442569e01012e3d4aa24ec862b8f7ee46a527
+PODFILE CHECKSUM: cea543b4a5f69d9f4a6c0a524797e19cce11f2f2
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.2.0
