@@ -27,10 +27,10 @@ public protocol Queueable {
 }
 
 public final class RxQueue: NSObject {
-  public private(set) var pool = [Queueable]()
+  public fileprivate(set) var pool = [Queueable]()
   fileprivate let publisher = PublishSubject<(Int, Queueable)>()
-  private let disposeBag = DisposeBag()
-  private var services = [Service]()
+  fileprivate let disposeBag = DisposeBag()
+  fileprivate var services = [Service]()
   fileprivate let interrupt = PublishSubject<Queueable>()
   fileprivate let append = PublishSubject<Queueable>()
   
@@ -40,7 +40,7 @@ public final class RxQueue: NSObject {
     setupSubscriber()
   }
   
-  private func setupSubscriber() {
+  fileprivate func setupSubscriber() {
     services.enumerated().forEach { (index, service) in
       service.stateBehavior.filter({ $0 == .working }).subscribe(onNext: { [weak self] (_) in
         guard let element = service.element else { return }
@@ -71,7 +71,7 @@ public final class RxQueue: NSObject {
     executeNextIfNeeded()
   }
   
-  private func executeNextIfNeeded() {
+  fileprivate func executeNextIfNeeded() {
     guard let nextItem = pool.first else { return }
     let unusedServices = services.filter({ !$0.isWorking })
     if nextItem.proprietary <= unusedServices.count {
@@ -91,7 +91,7 @@ final class Service {
   var isWorking: Bool {
     return (((try? stateBehavior.value()) ?? .idle)) == .working
   }
-  private(set) var element: Queueable? = nil
+  fileprivate(set) var element: Queueable? = nil
   
   func start(_ element: Queueable) {
     self.element = element
