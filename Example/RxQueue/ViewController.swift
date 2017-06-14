@@ -22,13 +22,13 @@ final class ViewController: UIViewController {
   @IBOutlet private weak var service02: UILabel!
   @IBOutlet private weak var service03: UILabel!
   
-  private var queue = RxQueue(serviceCount: 3)
+  private var queue = RxQueue(service: 3)
   private var disposeBag = DisposeBag()
   private var count = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    queue.rx.out.subscribe(onNext: { [weak self] (index, item) in
+    queue.output.subscribe(onNext: { [weak self] (index, item) in
       guard let item = item as? QueueItem else { return }
       DispatchQueue.main.async {
         self?.poolLabel.text = self?.queue.pool.flatMap({ $0 as? QueueItem }).map({"\($0.value)"}).joined(separator: ",")

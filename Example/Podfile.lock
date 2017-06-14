@@ -1,5 +1,5 @@
 PODS:
-  - RxQueue (0.1.4):
+  - RxQueue (0.2.0):
     - RxSwift
   - RxSwift (3.3.1)
 
@@ -12,9 +12,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RxQueue: 057d61a4e53a9407e7bb0a5fadcab8dfb7c95a0c
+  RxQueue: 1fa0125c6e5b936f04cda0d37218a519b4698af7
   RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
 
 PODFILE CHECKSUM: cea543b4a5f69d9f4a6c0a524797e19cce11f2f2
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1
