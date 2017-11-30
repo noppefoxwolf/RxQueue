@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D72D31571FCFC9E80065F91E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72D31561FCFC9E80065F91E /* RxSwift.framework */; };
 		D7B8A4D21FCEDE5100AA86D2 /* RxQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = D7B8A4D01FCEDE5100AA86D2 /* RxQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7B8A4DA1FCEDE6700AA86D2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B8A4D81FCEDE6700AA86D2 /* Service.swift */; };
 		D7B8A4DB1FCEDE6700AA86D2 /* RxQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B8A4D91FCEDE6700AA86D2 /* RxQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D72D31561FCFC9E80065F91E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		D7B8A4CD1FCEDE5100AA86D2 /* RxQueue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxQueue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B8A4D01FCEDE5100AA86D2 /* RxQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxQueue.h; sourceTree = "<group>"; };
 		D7B8A4D11FCEDE5100AA86D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -25,17 +27,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72D31571FCFC9E80065F91E /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D72D31551FCFC9E80065F91E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D72D31561FCFC9E80065F91E /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D7B8A4C31FCEDE5100AA86D2 = {
 			isa = PBXGroup;
 			children = (
 				D7B8A4CF1FCEDE5100AA86D2 /* RxQueue */,
 				D7B8A4CE1FCEDE5100AA86D2 /* Products */,
+				D72D31551FCFC9E80065F91E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,6 +284,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Build/iOS";
 				INFOPLIST_FILE = RxQueue/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -296,6 +309,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Build/iOS";
 				INFOPLIST_FILE = RxQueue/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
