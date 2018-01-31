@@ -1,5 +1,5 @@
 use_frameworks!
-swift_version = '3.0.0'
+swift_version = '4.0'
 
 target 'RxQueue_Example' do
   pod 'RxQueue', :path => '../'
