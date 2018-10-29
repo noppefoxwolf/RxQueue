@@ -22,7 +22,7 @@ final class Service {
   
   func start(_ element: Queueable) {
     self.element = element
-    let duration: DispatchTime = .now() + .seconds(Int(element.duration))
+    let duration: DispatchTime = .now() + element.duration
     state.value = .working
     DispatchQueue.main.asyncAfter(deadline: duration, execute: { [weak self] in
       self?.state.value = .idle

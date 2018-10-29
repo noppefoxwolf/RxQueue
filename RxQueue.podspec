@@ -14,4 +14,5 @@ A simple queue that can handle items that define processing duration.
   s.ios.deployment_target = '9.0'
   s.source_files = 'RxQueue/Classes/**/*'
   s.dependency 'RxSwift'
+  s.swift_version = '4.2'
 end

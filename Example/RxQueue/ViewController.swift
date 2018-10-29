@@ -31,7 +31,7 @@ final class ViewController: UIViewController {
     queue.output.subscribe(onNext: { [weak self] (index, item) in
       guard let item = item as? QueueItem else { return }
       DispatchQueue.main.async {
-        self?.poolLabel.text = self?.queue.pool.flatMap({ $0 as? QueueItem }).map({"\($0.value)"}).joined(separator: ",")
+        self?.poolLabel.text = self?.queue.pool.compactMap({ $0 as? QueueItem }).map({"\($0.value)"}).joined(separator: ",")
         switch index {
         case 0: self?.service01.text = "\(item.value)"
         case 1: self?.service02.text = "\(item.value)"
@@ -40,7 +40,7 @@ final class ViewController: UIViewController {
         }
         print(index, item.value)
       }
-    }).addDisposableTo(disposeBag)
+    }).disposed(by: disposeBag)
   }
   
   @IBAction func appendAction(_ sender: UIButton) {
