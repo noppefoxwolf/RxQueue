@@ -46,7 +46,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		63C69E4A159E6AAC097FC05E /* Pods_RxQueue_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxQueue_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7ECBCE7CDB78AC0BF9C748 /* Pods_RxQueue_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxQueue_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E755313498460885609C5487 /* RxQueue.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxQueue.podspec; path = ../RxQueue.podspec; sourceTree = "<group>"; };
+		E755313498460885609C5487 /* RxQueue.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxQueue.podspec; path = ../RxQueue.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
